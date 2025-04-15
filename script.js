@@ -16,8 +16,6 @@ let isDark = true;
       const m = now.getMinutes().toString().padStart(2, '0');
       const s = now.getSeconds().toString().padStart(2, '0');
       document.getElementById("clock").textContent = `${h}:${m}:${s} ${meridiem}`;
-      document.getElementById("clock").classList.add("tick-animate");
-      setTimeout(() => document.getElementById("clock").classList.remove("tick-animate"), 300);
 
       // Date
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

@@ -8,7 +8,7 @@
   body {
     margin: 0;
     padding: 20px;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--bg-dark);
     display: flex;
     flex-direction: column;
@@ -16,23 +16,27 @@
     justify-content: center;
     font-family: 'Share Tech Mono', monospace;
     transition: background-color 0.3s;
-    
   }
 
   .clock-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 80px;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 900px;
   }
 
   #clock-container, #analog-container {
+    flex: 1 1 300px;
     backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.05);
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    text-align: center;
   }
 
   #clock {
@@ -43,13 +47,14 @@
     transition: text-shadow 0.3s, color 0.3s;
     letter-spacing: 6px;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap; /* ✅ Keep time and AM/PM on same line */
   }
 
   #date {
     margin-top: 15px;
     font-size: 1.5rem;
     color: #b9faff;
-  } 
+  }
 
   .toggle-btn {
     margin-top: 30px;
@@ -75,17 +80,18 @@
   .light-mode #clock {
     color: var(--text-light);
     text-shadow: 0 0 10px var(--text-light), 0 0 3px var(--text-light);
-    
   }
+
   .light-mode #analog-clock {
-    border-color:var(--text-light);
-     
+    border-color: var(--text-light);
   }
+
   .light-mode #analog-container {
-     box-shadow: 0 0 30px var(--text-light);
+    box-shadow: 0 0 30px var(--text-light);
   }
+
   .light-mode #clock-container {
-     box-shadow: 0 0 30px var(--text-light);
+    box-shadow: 0 0 30px var(--text-light);
   }
 
   .light-mode #date {
@@ -110,6 +116,7 @@
     border-radius: 50%;
     position: relative;
     background-color: rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
   }
 
   .hand {
@@ -147,4 +154,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    #clock {
+      font-size: 3rem;
+      white-space: unset;
+    }
+
+    #analog-clock {
+      width: 150px;
+      height: 150px;
+    }
+
+    .hour { height: 40px; width: 5px; }
+    .minute { height: 60px; width: 3px; }
+    .second { height: 80px; width: 2px; }
+    #date {
+      font-size: 1.1rem;
+    }
+
+    .toggle-btn {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
   }
